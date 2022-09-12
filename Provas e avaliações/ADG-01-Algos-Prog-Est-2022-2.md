@@ -25,7 +25,7 @@ Tomando como referência as definições e características de Algoritmos e Ling
 
 Assinale a alternativa que apresenta a sequência correta.
 
-**Gabarito: V - V - V.**
+**Gabarito: V - V - F.**
 
 ---
 
