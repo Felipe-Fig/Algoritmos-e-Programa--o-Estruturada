@@ -1,4 +1,5 @@
 1) Sabemos que um algoritmo é uma sequência logica de procedimentos para conseguir chegar a um resultado desejado. Existem diversos tipos de algoritmos, dentre eles, podemos citar: Linguagem natural , Diagramas de blocos (fluxograma) e os Pseudocódigos. Neste contexto, relacione corretamente as colunas a seguir.
+
 | Coluna A | Coluna B |
 |--------|---------|
 | A - Linguagem natural | 1 - Um conjunto de símbolos gráficos, onde cada um desses símbolos representa ações especificas a serem executadas pelo computador.|
