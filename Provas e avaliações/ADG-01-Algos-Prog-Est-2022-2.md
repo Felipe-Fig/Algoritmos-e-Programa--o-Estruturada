@@ -17,8 +17,10 @@ Assinale a alternativa que apresenta a associação CORRETA:
 Tomando como referência as definições e características de Algoritmos e Linguagem de Programação, julgue as afirmativas a seguir  e marque (V)  para verdadeiras ou (F) para falso.
 
 (   ) Em algoritmos a forma de escrever (maiúsculas e minúsculas) não acarretará em erros, porém, em linguagem de programação C é preciso diferenciar as palavras em letras maiúsculas e minúsculas.
+
 (   )  As sintaxes (instrução) deverão ser escritas e armazenada na memória do computador na mesma ordem que se espera ser executada, ou seja, ela pode ser linear
 (executada sequencialmente) e não linear (executada de forma a serem redirecionadas, isto é, uma instrução de bifurcação).
+
 (   ) Um programa é uma sequência de código organizada de tal forma que, na maioria dos casos, permita resolver um determinado problema. Um programa pode ser desenvolvido em módulos distintos e/ou em subprogramas.
 
 Assinale a alternativa que apresenta a sequência correta.
