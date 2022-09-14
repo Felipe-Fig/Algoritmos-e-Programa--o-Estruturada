@@ -42,6 +42,6 @@ Sobre o comando while com teste no inicio é correto afirmar que:
 
 O comando iterativo “for”, que em português significa “para”, segundo Mizrahi (2008), é:
 
-**Gabarito: geralmente usado para repetir um comando por um número alternado de vezes, isto é, pode-se determinar quantas vezes acontecerá a repetição.**
+**Gabarito: geralmente usado para repetir uma informação por um número fixo de vezes, isto é, pode-se determinar quantas vezes acontecerá a repetição.**
 
 ---
