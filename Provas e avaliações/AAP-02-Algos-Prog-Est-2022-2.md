@@ -2,11 +2,11 @@
 
 Figura 5 - Fluxograma de estrutura condicional de seleção de casos
 
-![figura 1](link)
+![figura 1](https://github.com/Felipe-Fig/Algoritmos-e-Programacao-Estruturada/blob/252847fe7878a0bc73285aa529b0021faebb28ae/Provas%20e%20avalia%C3%A7%C3%B5es/figura1%20aap02%20algos.png)
 
 Assinale a alternativa que contém a sintaxe em C que representa o fluxograma da figura anterior.
 
-**Gabarito: ```C
+**Gabarito:
 switch (variável)
 {
 case constante1:
@@ -17,13 +17,13 @@ case constante2:
 break;
 default: <comandos>
 }
-```
+
 **
 ---
 
 2) Existem casos em que é necessário estabelecer verificação de condições sucessivas, em que uma determinada ação poderá ser executada se um conjunto anterior de instruções ou condições for satisfeito. Sendo a ação executada, ela poderá ainda estabelecer novas condições. Isto significa utilizar uma condição dentro de outra condição. 
 
-Fonte:Disponível em<http://estruturacondicional.blogspot.com/2008/07/estrutura-condicional-encadeada.html>Acesso.11.Jul.2018 (Modificado)
+Fonte:Disponível em <http://estruturacondicional.blogspot.com/2008/07/estrutura-condicional-encadeada.html>Acesso.11.Jul.2018 (Modificado)
 
 Este tipo de estrutura poderá possuir diversos níveis de condição, sendo chamadas de:
 
