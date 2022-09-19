@@ -44,11 +44,11 @@ return 0; }
  
 Tomando como referência o contexto apresentado, julgue as afirmativas a seguir em (V) Verdadeiras ou (F) Falsas .
 
-(    ) Uma função criada para retornar um valor char, o comando return somente poderá retornar o valor char.
+(    ) Uma função criada para retornar um valor `char`, o comando `return` somente poderá retornar o valor char.
 
-(    ) Uma função pode ser chamada quantas vezes forem necessárias para realizar uma tarefa, a única exceção é de que não podemos fazer essa chamada dentro de uma estrutura de repetição for ( ), somente poderá ser utilizado o comando while ( ).
+(    ) Uma função pode ser chamada quantas vezes forem necessárias para realizar uma tarefa, a única exceção é de que não podemos fazer essa chamada dentro de uma estrutura de repetição `for( )`, somente poderá ser utilizado o comando `while( )`.
 
-(    ) No programa apresentado, existem duas funções que não utilizam o return porque elas são do tipo void.
+(    ) No programa apresentado, existem duas funções que não utilizam o return porque elas são do tipo `void`.
 
 (    ) A variável que foi utilizada no comando `for (i = 0; i < 10; i++)` foi declarada como tipo `int` e deveria ser `float` pois, quando usamos vetores os números podem ser maiores.
 
@@ -110,7 +110,7 @@ IV - As variáveis globais permanecem na memória durante todo o tempo de execu�
 
 4) Analise a figura a seguir.
 
-![fig1aap03algos](link)
+![fig1aap03algos](https://github.com/Felipe-Fig/Algoritmos-e-Programacao-Estruturada/blob/339e649ca10d0b7aaad1a3a86ff837ddbc4c6da7/Provas%20e%20avalia%C3%A7%C3%B5es/fig%201%20aap03%20algos.png)
 
 Para compreender o mecanismo  apresentado na imagem anterior, organize as operações em sequência correta:
 
