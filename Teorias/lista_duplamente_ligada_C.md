@@ -136,5 +136,156 @@ Um node ao ser deletado de uma lista duplamente ligada pode estar em uma das seg
 - Ele pode ser o último node da lista
 Portanto é importante colocar todas estas situações no código e ainda respeitar o que foi falado acima de trocar os ponteiros para remover esse node da lista.
 
+Vamos visualizar essa situação. Aqui eu trago três nodes, cada um com seu nome, dados e ponteiros:
+
+| HEAD | MEIO | END |
+| ---- | ---- | --- |
+|int dados|int dados|int dados|
+|*p frente|*p frente|*p frente|
+|*p trás|*p trás|*p trás|
+
+Fazer a remoção de um node significará atuar nos dois nodes adjacentes para alterar seus ponteiros.
+O programa que usaremos recebe como parâmetro o node que queremos retirar, portanto precisamos usar essa informação pra chegar aos nodes adjacentes e então fazer as alterações.
+
+- Suponha que o node a ser removido é o *HEAD*:
+
+Atuaremos nos nodes adjacentes a ele, sendo pra trás `NULL` e pra frente o node `MEIO`.  Ou seja, teremos que conectar o ponteiro `*p trás` do node `MEIO` com o `NULL`.
+
+Porém, o usuário ou programa só fornece o node a ser retirado, nesse caso `HEAD`. Com isso, teremos que usar uma forma mais difícil de entender para acessar os dados dos nodes adjacentes, mas garanto que você entenderá.
+
+`HEAD->*p frente = MEIO`
+
+Por esse pseudocódigo acima entenda que: no node *HEAD* temos o ponteiro **p frente* e esse ponteiro aponta para o node *MEIO*.
+
+`HEAD->*p trás-> NULL`
+
+Aqui o node *HEAD* em seu ponteiro **p trás* aponta para *NULL* visto que ele é o primeiro da lista. Portanto, precisamos passar a informação de que `MEIO->*p trás = NULL` sem mencionar o node *MEIO*.
+
+Para isso usamos a seguinte equivalência:<br> `HEAD->*p trás = HEAD->*p frente->*p trás`.
+
+O quê fizemos aqui foi falar que o ponteiro **p trás* do node *MEIO* (NULL) passará a ser o [`HEAD->*p-> frente` que é o node *MEIO*] [`->*p trás` que é seu ponteiro para trás.] Veja que `HEAD->*p frente->*p trás` é o mesmo que `MEIO->*p trás`.
+
+Se antes o `MEIO->*p trás` apontava para o endereço do node *HEAD*, agora ele passará a apontar para *NULL*.
+
+Toda operação de remoção, independente do node retirado passa por esse reciocínio. Com isso vou trazer um pseudocódigo que facilitará entender a utilização para todos os casos. Após isso é só implementar.
+
+```
+se HEAD == node_a_remover então
+    HEAD == node_a_remover->*p frente
+
+    // se o node HEAD for o node a ser removido, então o novo HEAD da lista duplamente ligada será o node que está guardado no ponteiro *p frente do HEAD, ou seja, no nosso exemplo, MEIO.
+
+se node_a_remover->*p frente != NULL então
+    node_a_remover->*p frente->*p trás = node_a_remover->*p trás
+
+    // caso o node_a_remover->*p frente seja = NULL significa que ele é o último da lista. Se ele for != então tem algum ou alguns nodes na frente dele. Então, se node_a_remover->*p frente != NULL o <node_a_remover->*p frente->*p trás que é igual ao ponteiro *p trás node seguinte> será alterado para o ponteiro *p trás do node_a_remover.
+
+se node_a_remover->*p trás != NULL então
+    node_a_remover->*p trás->*p frente = node_a_remover->*p frente
+
+    // usando a mesma analogia do caso acima, se existe algum node antes do node_a_remover então deve ser feita a alteração do ponteiro *p frente do node antes do que será removido para o endereço do ponteiro *p frente do node_a_remover. Lembre-se que o node anterior ao node_a_remover é <node_a_remover->*p trás>.
+```
+
+O [Geeks for Geeks](https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/) traz esse código, o qual eu ainda traduzirei para facilitar o entendimento:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+/* a node of the doubly linked list */
+struct Node {
+	int data;
+	struct Node* next;
+	struct Node* prev;
+};
+
+/* Function to delete a node in a Doubly Linked List.
+head_ref --> pointer to head node pointer.
+del --> pointer to node to be deleted. */
+void deleteNode(struct Node** head_ref, struct Node* del)
+{
+	/* base case */
+	if (*head_ref == NULL || del == NULL)
+		return;
+
+	/* If node to be deleted is head node */
+	if (*head_ref == del)
+		*head_ref = del->next;
+
+	/* Change next only if node to be deleted is NOT the last node */
+	if (del->next != NULL)
+		del->next->prev = del->prev;
+
+	/* Change prev only if node to be deleted is NOT the first node */
+	if (del->prev != NULL)
+		del->prev->next = del->next;
+
+	/* Finally, free the memory occupied by del*/
+	free(del);
+	return;
+}
+
+/* UTILITY FUNCTIONS */
+/* Function to insert a node at the beginning of the Doubly Linked List */
+void push(struct Node** head_ref, int new_data)
+{
+	/* allocate node */
+	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+	/* put in the data */
+	new_node->data = new_data;
+
+	/* since we are adding at the beginning,
+	prev is always NULL */
+	new_node->prev = NULL;
+
+	/* link the old list off the new node */
+	new_node->next = (*head_ref);
+
+	/* change prev of head node to new node */
+	if ((*head_ref) != NULL)
+		(*head_ref)->prev = new_node;
+
+	/* move the head to point to the new node */
+	(*head_ref) = new_node;
+}
+
+/* Function to print nodes in a given doubly linked list
+This function is same as printList() of singly linked list */
+void printList(struct Node* node)
+{
+	while (node != NULL) {
+		printf("%d ", node->data);
+		node = node->next;
+	}
+}
+
+/* Driver program to test above functions*/
+int main()
+{
+	/* Start with the empty list */
+	struct Node* head = NULL;
+
+	/* Let us create the doubly linked list 10<->8<->4<->2 */
+	push(&head, 2);
+	push(&head, 4);
+	push(&head, 8);
+	push(&head, 10);
+
+	printf("\n Original Linked list ");
+	printList(head);
+
+	/* delete nodes from the doubly linked list */
+	deleteNode(&head, head); /*delete first node*/
+	deleteNode(&head, head->next); /*delete middle node*/
+	deleteNode(&head, head->next); /*delete last node*/
+
+	/* Modified linked list will be NULL<-8->NULL */
+	printf("\n Modified Linked list ");
+	printList(head);
+
+	getchar();
+}
+```
 
 ## Ordenar a lista duplamente ligada
