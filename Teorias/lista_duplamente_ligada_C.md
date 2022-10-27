@@ -289,3 +289,149 @@ int main()
 ```
 
 ## Ordenar a lista duplamente ligada
+
+Em uma lista duplamente ligada, é possível realizar a ordenação de seus elementos de forma crescente ou decrescente, criando uma simples comparação entre os elementos e realizando a sua troca, em caso de aceitarem a condição de maior ou menor. Podemos utilizar o trecho de código a seguir para realizar a ordenação:
+
+```C
+void Ordena(Lista* l)
+{
+    Lista* p;
+    Lista* aux;
+    int temp;
+    for (p = l; p != NULL; p = p -> prox) 
+    {
+        for (aux = p -> prox; aux != NULL; aux = aux -> prox)
+        {
+            if ((p -> info) > (aux -> info)) 
+            {
+                temp = p -> info;
+                p -> info = aux -> info;
+                aux -> info = temp;
+            }
+        }
+    }
+}
+```
+
+Para chamar a função de ordenação, passamos somente na função principal Main o parâmetro a seguir:
+
+`printf(“\n Lista Ordenada”);`
+`Ordena(listaFinal);`
+
+Neste exemplo, podemos observar que o sistema realiza a chamada da função e executa as rotinas, mas é possível, dentro da função principal Main, criar rotinas nas quais o usuário pode informar os elementos para serem inseridos, removidos ou para realizar a busca de um elemento.
+
+Reflita: Sabemos que as listas duplamente ligadas permitem as mesmas funções que as listas ligadas simples, no entanto, podemos saber qual o elemento anterior e o próximo elemento devido aos ponteiros existentes. De que forma poderíamos imprimir a lista em ordem inversa em uma lista duplamente ligada?
+
+### Questão e resposta apresentados pelo material: 
+
+Você tem a função de atender à demanda de um cliente de um comércio de autopeças que possui duas unidades, uma matriz e uma filial, e deseja gerar um relatório para informação de estoque mínimo em seu sistema. O cliente solicitou que o relatório seja gerado em tempo real, apresentando um gráfico atualizado todas as vezes que um produto entrar ou sair desta listagem, por meio da venda ou compra de produtos. Este cliente também deseja pesquisar se um produto consta na listagem ou não.
+
+Como desafio, você precisa implementar no relatório em que está trabalhando a adição ou remoção de produtos na listagem de produtos.
+Como podemos adicionar ou remover produtos nesta lista? Pesquise sobre algoritmos de adição e remoção de dados em uma lista ligada.
+
+Como é possível adicionar a função de busca por algum produto específico na listagem? Você vai precisar pesquisar e compreender o funcionamento do algoritmo para percorrer uma lista e verificar se determinado valor se encontra nela.
+
+Para a resolução desta situação-problema, é necessário compreender os conceitos sobre as operações em listas ligadas e pesquisar outras técnicas para a criação das funções, para executar a adição e a remoção de elementos, assim como percorrer a lista e realizar uma contagem dos elementos e a criação da busca de elementos em uma lista ligada.
+Para iniciar, implementamos a lista como:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+// perceba que não se trata de uma lista duplamente ligada nesse caso pois há apenas uma referência de ponteiro.
+struct listaProd 
+{
+    int codigo;
+    char produto[30];
+    struct listaProd* prox;
+};
+typedef struct listaProd Produtos;
+
+// função usada para inicializar a lista (struct)
+Produtos* inicializar (void)
+{
+    return NULL;
+}
+
+// função que INSERE novos produtos na lista. Nesse caso é passado para a função uma lista "l" que é do tipo da struct ou lista "Produtos", por isso do ponteiro.
+Produtos* inserir (Produtos* l, int i, char* nprod) 
+{
+    Produtos* novo = (Produtos*)malloc(sizeof(Produtos));
+    novo -> codigo = i;
+    novo -> produto = nprod;
+    // repare que o produto é adicionado ao início da lista fornecida. Quando você fornece uma  lista "l", esse produto "novo" é adicionado em seu início, o que pode ser confirmado ao avaliar que o ponteiro "novo.prox" aponta para o primeiro endereço de "l".
+    novo -> prox = l;
+    return novo;
+}
+
+// função usada para REMOVER produtos da lista. Para esse função é fornecida uma lista "l" da qual o item será removido e um inteiro "v" que indica o índice "produtos.código" da lista em questão, ou seja, o número do produto a ser removido.
+Produtos* retira (Produtos* l, int v) 
+{
+
+    Produtos* ant = NULL;
+
+    Produtos* p = l;
+
+    // código que vai iterar ao longo da lista enquanto "p" não for NULL, sendo que "p" começa sendo o valor "l" ou a lista passada para ter um ítem retirado E o código dessa lista (p.codigo) seja diferente do parâmetro passado pelo usuário "v", pois "v" é o código do item a ser removido.
+    while (p != NULL && p -> codigo != v) 
+    {
+        ant = p;
+        p = p -> prox;
+        // enquanto esse loop for verdadeiro o anterior (que começa como NULL) passa a ter o valor de "p" e o que era "p" passará a ser "p.prox", caracterizando o percorrer da lista.
+    }
+
+    // caso seja fornecida uma lista "l" vazia, "p" será igual a "l" e se for == NULL, retorna a mesma lista fornecida.
+    if (p == NULL )
+        return l;
+    
+    // não entendi especificamente o quê essa parte da função faz visto que no início da função "Produtos* ant = NULL" então (em tese) todos os casos deveriam passar direto por essa condição abaixo...
+    if (ant == NULL) 
+    {
+        l = p -> prox;
+    } 
+    else 
+    {
+        ant -> prox = p -> prox;
+    }
+
+    return l;
+}
+
+Produtos* busca(Produtos* l, int v)
+{
+    Produtos* p;
+    for (p = l; p != NULL; p = p -> prox) {
+    if (p -> codigo == v)
+    return p;
+    }
+    return NULL;
+}
+
+int main() 
+{
+int cont, codprod;
+char nprod[30];
+Produtos* lis taProdutos;
+lis taProdutos = inicializar(); /* inicializa
+lis ta como vazia */
+for (cont = 0; cont < 3; cont++){
+printf(“\nInforme o codigo do Produto: “);
+scanf(“%d”,&codprod);
+printf(“\nInforme o nome do Produto: \n”);
+scanf(“%d”,&nprod);
+lis taProdutos = inserir(lis taProdutos,
+codprod, nprod);
+}
+printf(“Lis ta Produtos:\n”);
+imprimir(lis taProdutos);
+printf(“\nInforme o codigo do produto para
+pesquisa: “);
+scanf(“%d”, &codpro);
+if (busca(lis taProdutos, codprod) == NULL) {
+printf(“\n\n- Produto não encontrado\n”);
+} else {
+printf(“\n\n- Produto encontrado\n”);
+}
+printf(“\n”); sys tem(“PAUSE”);
+}
+```
