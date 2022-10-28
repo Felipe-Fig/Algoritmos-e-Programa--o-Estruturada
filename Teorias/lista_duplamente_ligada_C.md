@@ -400,38 +400,45 @@ Produtos* retira (Produtos* l, int v)
 Produtos* busca(Produtos* l, int v)
 {
     Produtos* p;
-    for (p = l; p != NULL; p = p -> prox) {
-    if (p -> codigo == v)
-    return p;
+    for (p = l; p != NULL; p = p -> prox) 
+    {
+        if (p -> codigo == v)
+            return p;
     }
     return NULL;
 }
 
 int main() 
 {
-int cont, codprod;
-char nprod[30];
-Produtos* lis taProdutos;
-lis taProdutos = inicializar(); /* inicializa
-lis ta como vazia */
-for (cont = 0; cont < 3; cont++){
-printf(“\nInforme o codigo do Produto: “);
-scanf(“%d”,&codprod);
-printf(“\nInforme o nome do Produto: \n”);
-scanf(“%d”,&nprod);
-lis taProdutos = inserir(lis taProdutos,
-codprod, nprod);
-}
-printf(“Lis ta Produtos:\n”);
-imprimir(lis taProdutos);
-printf(“\nInforme o codigo do produto para
-pesquisa: “);
-scanf(“%d”, &codpro);
-if (busca(lis taProdutos, codprod) == NULL) {
-printf(“\n\n- Produto não encontrado\n”);
-} else {
-printf(“\n\n- Produto encontrado\n”);
-}
-printf(“\n”); sys tem(“PAUSE”);
+    int cont, codprod;
+    char nprod[30];
+
+    Produtos* listaProdutos;
+    listaProdutos = inicializar(); /* inicializa lista como vazia */
+
+    for (cont = 0; cont < 3; cont++)
+    {
+        printf("\n Informe o codigo do Produto: ");
+        scanf("%d",&codprod);
+        printf("\n Informe o nome do Produto: \n");
+        scanf("%d",&nprod);
+        listaProdutos = inserir(listaProdutos, codprod, nprod);
+    }
+
+    printf("Lista Produtos:\n");
+    imprimir(listaProdutos);
+    printf("\n Informe o codigo do produto para pesquisa: ");
+    scanf("%d", &codpro);
+
+    if (busca(listaProdutos, codprod) == NULL) 
+    {
+        printf("\n\n- Produto não encontrado \n");
+    } 
+    else 
+    {
+        printf("\n\n- Produto encontrado \n");
+    }
+    printf("\n"); 
+    system(“PAUSE”);
 }
 ```
