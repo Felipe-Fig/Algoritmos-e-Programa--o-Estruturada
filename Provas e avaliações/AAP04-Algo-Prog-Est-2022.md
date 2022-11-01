@@ -29,10 +29,9 @@ Alternativas:
 
 >Já um índice de um vetor é um item pertencente aquele conjunto maior, que é o vetor (como a casa em uma rua). Se eu tenho um *array* chamado `arr[]` então o índice seria `arr[1]`, `arr[2]`, por exemplo. É especificamente a posição de algum valor dentro do *array*.
 
->Uma lista ligada é bem explicada pela brincadeira do amigo secreto, onde há as conexões bem estabelecidas. Sua
-propriedade estrutural baseia-se apenas na posição relativa dos elementos, que são dispostos linearmente. De acordo com Silva (2007), é também conhecida como lista encadeada. É composta por um conjunto de dados dispostos por uma sequência de nós, em que a relação de sucessão desses elementos é determinada por um ponteiro que indica a posição do próximo elemento, podendo estar ordenado ou não.
+>Uma lista ligada é bem explicada pela brincadeira do amigo secreto, onde há as conexões bem estabelecidas. Sua propriedade estrutural baseia-se apenas na posição relativa dos elementos, que são dispostos linearmente. De acordo com Silva (2007), é também conhecida como lista encadeada. É composta por um conjunto de dados dispostos por uma sequência de nós, em que a relação de sucessão desses elementos é determinada por um ponteiro que indica a posição do próximo elemento, podendo estar ordenado ou não.
 
-Já um elemento da lista pode ser explicado como uma música em uma playlist.
+>Já um elemento da lista pode ser explicado como uma música em uma playlist. Um nó em meio a uma lista seria o mesmo que uma música em meio uma playlist.
 
 ---
 
