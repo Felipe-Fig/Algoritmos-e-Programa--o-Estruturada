@@ -47,7 +47,9 @@ Alternativas:
     d) As listas permitem inserção de elementos em qualquer posição.
     e) As listas não permitem sobreposição ao inserir elementos.
 
-**Gabarito: **
+**Gabarito: d) As listas permitem inserção de elementos em qualquer posição.**
+
+>Considerando a natureza das listas e o fato de possuírem ponteiros para o item subsequente e no caso das duplamente ligadas, para o antecessor também, é permitido criar funções que inserem algum elemento em qualquer posição da lista, seja início, meio ou fim ou até atrás ou na frente de algum item específico.
 
 ---
 
@@ -63,16 +65,16 @@ struct Pilha minhaPilha;
 ``` 
 Segundo Celes, Cerqueira e Rangel (2004), com a estrutura declarada é possível criar a função para criar uma pilha. Esta função aloca dinamicamente na memória o espaço para utilização da pilha. O trecho de código para criação da pilha pode ser implementado por:
 ```C
-void cria_pilha(struct Pilha *p, int c )
+void cria_pilha(struct Pilha *p, int c)
 {
-    p -> proxElem = (float*) malloc (c * sizeof(float));
+    p -> proxElem = (float*)malloc(c*sizeof(float));
     p -> topo = -1;
     p -> capacidade = c;
 }
 ```
 Com a função para criar a pilha realizada, ela estará vazia, ou seja, não terá nenhum elemento na pilha em sua criação. Assim, é possível criar a função que vai permitir ser inserido um novo elemento na pilha.
 
-Considerando os códigos apresentados, o  correto  formato  para inserir um novo elemento na pilha  usando o nome `push()` é:
+Considerando os códigos apresentados, o correto formato para inserir um novo elemento na pilha usando o nome `push()` é:
 
 Alternativas:
 
@@ -112,7 +114,7 @@ p -> proxElem [p -> topo] = v;
 }
 ```
 
-**Gabarito: **
+**Gabarito: Letra C**
 
 ---
 
