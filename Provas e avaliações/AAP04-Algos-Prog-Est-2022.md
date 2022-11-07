@@ -125,7 +125,7 @@ float remove_fila (Fila* f)
     char elem;
     if (fila_vazia(f))
     {
-        printf(“A Fila esta vazia\n”);
+        printf("A Fila esta vazia\n");
         exit(1);
     }
     elem = f -> vet[f -> ini];
@@ -156,6 +156,26 @@ Alternativas:
     d) V-V-F-F-F.
     e) V-F-F-V-F.
 
-**Gabarito: **
+**Gabarito: d) V-V-F-F-F.**
 
+>A estrutura de uma fila é a seguinte:
+```C
+struct fila
+{
+    int qtd; //quantidade de elementos
+    int inicio; 
+    char vetor;
+};
+
+//Alguns detalhes válidos:
+
+elem = f->vet[f->ini]; //aponta para o vetor da 1ª posição.
+
+f -> ini = (f -> ini + 1) % N; // o início da fila passa a ser o item seguinte
+
+f -> n--; // diminui a quantidade de elementos
+```
+>A 3ª está errada pois caso a fila possua elementos, a variável **elem** recebe o elemento da primeira posição da fila.
+>A 4ª está errada pois: o início da fila vai pro elemento seguinte.
+>A 5ª está errada pois: Este elemento ~~incrementa~~ **decresce** a quantidade de elementos e retorna o elemento removido.
 ---
